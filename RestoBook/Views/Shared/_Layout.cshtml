@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RestoBook - @ViewBag.Title</title>
+    @System.Web.Optimization.Styles.Render("~/css")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("RestoBook", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Proposer restaurant", "Proposer", "Restaurant")
+                    </li>
+                </ul>
+                @if (!Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.ActionLink("S'enregistrer", "Create", "Account")
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("Se connecter", "LogIn", "Account")
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.ActionLink("Bonjour " + User.Identity.Name, "LogIn", "Account")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Se deconnecter", "Logout", "Account")
+                        </li>
+                    </ul>
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - RestoBook</p>
+        </footer>
+    </div>
+    @System.Web.Optimization.Scripts.Render("~/js/jquery")
+    @System.Web.Optimization.Scripts.Render("~/js/boostrap")
+    @System.Web.Optimization.Scripts.Render("~/js/modernizr")
+    
+    @System.Web.Optimization.Scripts.Render("~/js/jqueryval")
+</body>
+</html>

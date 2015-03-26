@@ -1,0 +1,17 @@
+﻿
+
+@{
+    ViewBag.Title = "_Search";
+}
+
+@using (Html.BeginForm("Index", "Restaurant", FormMethod.Get, new { @class = "form-inline" }))
+{
+    @Html.TextBox("Search", string.Empty, new { @class = "form-control", @placeholder = "Ville, nom du restaurant" })
+    @*@Html.DropDownList("chosenGenre", (SelectList)ViewBag.TypeRestaurant, "r")*@
+
+    <button type="submit" class="btn btn-default">Rechercher</button>
+}
+
+
+
+

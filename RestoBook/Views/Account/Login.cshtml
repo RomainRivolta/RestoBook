@@ -1,0 +1,41 @@
+﻿@model RestoBook.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(model=>model.Email)
+                @Html.EditorFor(model=>model.Email,new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password)
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, string.Empty, new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+       
+    <button class="btn btn-default" type="submit">Submit</button>
+    <button class="btn btn-default" type="reset">Cancel</button>
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ActionLink("Créer un compte", "Create", "Account")
+        </div>
+    </div>
+}
